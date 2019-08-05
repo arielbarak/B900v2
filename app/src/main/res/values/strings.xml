@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">B900-v2</string>
+    <string name="password">Password</string>
+    <string name="date_of_birth">Date Of Birth</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="gender">Pick your gender</string>
+    <string-array name="gender_options">
+        <item>Man</item>
+        <item>Woman</item>
+        <item>Other</item>
+    </string-array>
+    <string name="profile_picture">Profile Picture</string>
+    <string name="add_picture">Add Picture</string>
+</resources>
