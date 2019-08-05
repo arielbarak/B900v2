@@ -8,7 +8,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="gender">Pick your gender</string>
-    <string-array name="gender_options">
+    <string-array name="array_gender">
         <item>Man</item>
         <item>Woman</item>
         <item>Other</item>

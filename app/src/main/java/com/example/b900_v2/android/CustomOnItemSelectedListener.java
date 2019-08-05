@@ -1,4 +1,4 @@
-package com.example.b900_v2.fuctionality;
+package com.example.b900_v2.android;
 
 import android.view.View;
 import android.widget.AdapterView;

@@ -13,10 +13,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.b900_v2.android.CustomOnItemSelectedListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Register extends AppCompatActivity {
 
     private EditText etEmail, etPassword, etDateOfBirth, etFullName, etUserName;
@@ -39,10 +44,16 @@ public class Register extends AppCompatActivity {
         etFullName = (EditText) findViewById(R.id.etFullName);
         etUserName=(EditText) findViewById(R.id.etUsername);
 
-        public void addListenerOnSpinnerItemSelection(){
-            etGender = (Spinner) findViewById(R.id.etGender);
-            etGender.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-        }
+        List<String> gender = new ArrayList<String>();
+        gender.add("Man");
+        gender.add("Woman");
+        gender.add("Other");
+
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,gender);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        etGender.setAdapter(dataAdapter);
+
+        etGender.setOnItemSelectedListener(new CustomOnItemSelectedListener());
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +77,11 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
+                if (etGender.getSelectedItemPosition() < 0)
+                {
+                    Toast.makeText(getApplicationContext(), "No gender was checked!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
